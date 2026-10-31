@@ -351,11 +351,7 @@ mod tests {
             <Vec<Option<String>> as Decode<Postgres>>::decode(value_ref).unwrap();
         assert_eq!(
             decoded,
-            vec![
-                Some("NULL".to_string()),
-                None,
-                Some("null".to_string()),
-            ]
+            vec![Some("NULL".to_string()), None, Some("null".to_string()),]
         );
     }
 
@@ -369,14 +365,7 @@ mod tests {
             format: PgValueFormat::Text,
         };
 
-        let decoded: Vec<String> =
-            <Vec<String> as Decode<Postgres>>::decode(value_ref).unwrap();
-        assert_eq!(
-            decoded,
-            vec![
-                "NULL".to_string(),
-                "foo".to_string(),
-            ]
-        );
+        let decoded: Vec<String> = <Vec<String> as Decode<Postgres>>::decode(value_ref).unwrap();
+        assert_eq!(decoded, vec!["NULL".to_string(), "foo".to_string(),]);
     }
 }
